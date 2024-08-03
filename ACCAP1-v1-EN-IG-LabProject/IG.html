@@ -1,0 +1,680 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit; background-repeat: inherit; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; white-space: nowrap; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; border: none !important; background-position: 0px 0px !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; background-position: 0px 0px; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right-width: 30px; border-right-style: solid; border-right-color: transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right-style: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right-style: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background-color: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>IG</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><link rel="stylesheet" href="http://use.fontawesome.com/releases/v6.3.0/css/all.css"><h1 id='instructor-guide-building-a-highly-available-scalable-web-application'><span>Instructor Guide: Building a Highly Available, Scalable Web Application</span></h1><p><i class="fa-solid fa-circle-exclamation" aria-label="Important icon"></i><span> </span><strong><span>Important:</span></strong><span> This guide is intended to support your use of the project materials. Use this guide as an answer key to perform the tasks that are mentioned in the lab instructions.</span></p><h2 id='introduction-to-the-project'><span>Introduction to the project</span></h2><p><em><span>The project is meant to challenge students</span></em><span>. The time that it takes students to complete the project will vary depending on student skill level. This project is anticipated to require </span><strong><span>8–12 hours</span></strong><span> to complete.</span></p><p><em><span>The lab environment is long lived</span></em><span>, meaning that if a student starts the lab on Monday, they could continue working on the lab on Tuesday or any following day. When the student starts the lab environment again, they will find that everything they created in the AWS account is still there, so they can continue where they left off.</span></p><h2 id='how-to-teach-the-project'><span>How to teach the project </span></h2><p><span>You could assign the project to students without spending much time on it in class. However, with that approach, students might struggle because sections of the lab instructions for students don’t provide step-by-step guidance.</span></p><p><span>The project has been designed with the intent of asking students to complete it over multiple days or weeks. The following sections provide a few suggested approaches that you could take with the project.</span></p><p><i class="fa-solid fa-lightbulb" aria-label="Tip icon"></i><span> </span><strong><span>Tip:</span></strong><span> You might want to encourage students to take screen captures or recordings as they complete the work. These assets could be helpful for you to assess student learning, and students could use them in a portfolio of their work when seeking employment.</span></p><p><strong><span>Option 1: Classroom approach</span></strong></p><p><em><span>Suitable for beginner students</span></em></p><p><span>You could teach the project through a guided approach with multiple scheduled check-in sessions. For example:</span></p><ul><li><p><span>Assign phases 1 and 2 as homework.</span></p></li><li><p><span>During your next class session, check in with students:</span></p><ul><li><span>Did they prepare the cost estimate?</span></li><li><span>Did they create the architectural diagram? Did they prepare to present the proposed solution in a presentation?</span></li><li><span>Did they create a functional web application on an Amazon Elastic Compute Cloud (Amazon EC2) instance?</span></li></ul></li><li><p><span>Assign phase 3. During your next class session, check in with students:</span></p><ul><li><span>Did they decouple the architecture?</span></li><li><span>Did they create an Amazon Relational Database Service (Amazon RDS) database in a separate subnet?</span></li></ul></li><li><p><span>Assign phase 4. During your next class session, check in with students:</span></p><ul><li><span>Did they create a load balancer?</span></li><li><span>Did they configure automatic scaling?</span></li><li><span>Does the solution work in the new architecture?</span></li><li><span>Did they load test the application?</span></li></ul></li></ul><p><strong><span>Option 2: Group approach</span></strong></p><p><em><span>Suitable when group discussion and study is encouraged</span></em></p><p><span>You could teach the project by organizing students into teams.</span></p><ul><li><span>Ask students to complete the project on their own, but encourage them to exchange tips with team members.</span></li><li><span>If a student is unable to proceed, have them first reach out to their fellow team members. If the team is unable to proceed, encourage them to reach out to you individually or on a forum where they could help each other.</span></li><li><span>Selectively share tips from this document as needed.</span></li></ul><p><strong><span>Option 3: Low-guidance or no-guidance approach</span></strong></p><p><em><span>Suitable for advanced students</span></em></p><p><span>You could advise advanced students to determine their own approach. They might use a different architecture and technology stack, instead of JavaScript.</span></p><h2 id='student-prerequisites'><span>Student prerequisites</span></h2><p><span>This project requires an understanding of core AWS services, such as compute, storage, networking, and database services. The project also requires knowledge of architectural best practices, such as high availability, scalability, and security. ​Students should have completed the AWS Academy Cloud Architecting course to gain this necessary knowledge.</span></p><p><span>Students who have completed the AWS Academy Cloud Foundations course and are enrolled in the AWS Academy Cloud Architecting course can also try to complete this project with the help of course materials, labs from courses, and educator guidance.</span></p><p><span>Knowledge of any programming language, such as Python or JavaScript, is an advantage but isn&#39;t mandatory.</span></p><h2 id='guiding-students'><span>Guiding students</span></h2><p><span>This section provides details about how to complete the steps in the project where detailed guidance is </span><em><span>not</span></em><span> provided to the student. The lab instructions include resource links and references to course materials that might be helpful. Encourage students to use these resources, and use this instructor guide to provide additional guidance as needed.</span></p><p><i class="fa-solid fa-note-sticky" aria-label="Note icon"></i><span> </span><strong><span>Note:</span></strong></p><ul><li><span>This instructor guide provides a sample solution for the scenario. However, this guide does not cover all possible solutions.</span></li><li><span>The phases and tasks in the instructor guide map to the phases and tasks in the lab instructions.</span></li></ul><p><i class="fa-solid fa-circle-exclamation" aria-label="Important icon"></i><span> </span><strong><span>Important:</span></strong><span> The solution in this guide works only if the code snippets are used exactly as instructed without modification.</span></p><h3 id='phase-1-planning-the-design-and-estimating-cost'><span>Phase 1: Planning the design and estimating cost</span></h3><p><span>In this phase, students plan the design of their solution and estimate the cost.</span></p><h4 id='task-1-creating-an-architectural-diagram'><span>Task 1: Creating an architectural diagram</span></h4><p><span>In this task, students create an architectural diagram that illustrates what they plan to build. Resources are provided to help students create the diagram.</span></p><p><span>The following architecture diagram shows the proposed solution:</span></p><p><img src="images/Final-arc.png" referrerpolicy="no-referrer" alt="Proposed architecture diagram"></p><p><strong><span>References</span></strong></p><ul><li><a href='https://aws.amazon.com/architecture/icons'><span>AWS Architecture Icons</span></a><span>: This site provides tools to draw AWS architecture diagrams. Use at your discretion.</span></li><li><a href='https://aws.amazon.com/architecture/reference-architecture-diagrams'><span>AWS Reference Architecture Diagrams</span></a><span>: This site provides reference architecture diagrams for a variety of use cases.</span></li></ul><p>&nbsp;</p><h4 id='task-2-developing-a-cost-estimate'><span>Task 2: Developing a cost estimate</span></h4><p><span>In this task, students develop a cost estimate to run their solution in the </span><em><span>us-east-1</span></em><span> Region for 12 months.</span></p><p><span>The solution is as follows:</span></p><ol start='' ><li><p><span>Go to the </span><a href='https://calculator.aws'><span>AWS Pricing Calculator</span></a><span>.</span></p></li><li><p><span>Choose </span><strong><span>Create estimate</span></strong><span>.</span></p></li><li><p><span>For </span><strong><span>Choose a Region</span></strong><span>, choose </span><strong><span>US East (N. Virginia)</span></strong><span>.</span></p></li><li><p><span>Search for and configure the services that will be used in the solution. Configure each service based on how it will be used.</span></p></li><li><p><span>After all required services are added, choose </span><strong><span>View summary</span></strong><span> in the bottom-right corner.</span></p><p><span>The estimate displays the estimated upfront cost (if any), monthly cost, and total cost for 12 months.</span></p></li><li><p><span>Review the cost estimates for individual services, and adjust the configuration to arrive at the approximate cost.</span></p></li><li><p><span>Export the estimate:</span></p><ul><li><span>Choose </span><strong><span>Export</span></strong><span>, and then choose to export as a .csv or .pdf file.</span></li><li><span>When prompted, choose </span><strong><span>OK</span></strong><span>, and download the file.</span></li></ul></li></ol><p><span>Students should use this estimate to adjust the configuration of their solution.</span></p><p><span>The following image displays a sample cost estimate. Cost estimates depend on the services that are selected and how they are configured. A student&#39;s estimate might be different from this sample.</span></p><p><img src="images/CostEstimate.png" referrerpolicy="no-referrer" alt="Cost estimate sample."></p><p><i class="fa-solid fa-circle-exclamation" aria-label="Important icon"></i><span> </span><strong><span>Important:</span></strong><span> The AWS Pricing Calculator provides only an estimate of your AWS fees and doesn&#39;t include any taxes that might apply. Your actual fees depend on a variety of factors, including your actual usage of AWS services.</span></p><p><i class="fa-solid fa-note-sticky" aria-label="Note icon"></i><span> </span><strong><span>Note:</span></strong><span> You might want to ask students to add the architectural diagram and cost estimate to a presentation to share with the class. You can evaluate these materials as part of the assessment of work on this project.</span></p><p><span>In this phase, students created an architecture diagram and cost estimate for the proposed solution.</span></p><p><strong><span>References</span></strong></p><ul><li><a href='https://docs.aws.amazon.com/pricing-calculator/latest/userguide/what-is-pricing-calculator.html'><span>What Is AWS Pricing Calculator?</span></a></li><li><a href='https://aws-tc-largeobjects.s3.us-west-2.amazonaws.com/CUR-TF-200-ACCAP1-1-DEV/1-lab-capstone-project-1/s3/Academy_Lab_Projects_Showcase_template.pptx'><span>PowerPoint presentation template</span></a><span>: This template is provided to students. Customize the presentation template as needed and share it with your students.</span></li></ul><p>&nbsp;</p><h3 id='phase-2-creating-a-basic-functional-web-application'><span>Phase 2: Creating a basic functional web application</span></h3><p><span>In this phase, students start to build the solution. They will configure the virtual network and create a web server.</span></p><p><span>The following diagram shows various AWS resources that are used to build the architecture for this phase:</span></p><p><img src="images/Phase-II-arc.png" referrerpolicy="no-referrer" alt="Phase 2 Architecture Diagram."></p><p>&nbsp;</p><h4 id='task-1-creating-a-virtual-network'><span>Task 1: Creating a virtual network</span></h4><p><span>In this task, students build the virtual network to host the application. The network configuration includes a virtual private cloud (VPC), an internet gateway, a subnet, and routes.</span></p><p><span>The solution is as follows:</span></p><ol start='' ><li><p><span>At the top of the AWS Management Console, in the search bar, search for and choose </span><code>VPC</code></p></li><li><p><span>Choose </span><strong><span>Create VPC</span></strong><span>, and configure the following:</span></p><ul><li><p><strong><span>Resources to create:</span></strong><span> Choose </span><strong><span>VPC only</span></strong><span>.</span></p></li><li><p><strong><span>Name tag:</span></strong><span> Enter </span><code>CapstoneVPC</code></p></li><li><p><strong><span>IPv4 CIDR:</span></strong><span> Enter </span><code>10.0.0.0/16</code></p><p><i class="fa-solid fa-note-sticky" aria-label="Note icon"></i><span> </span><strong><span>Note:</span></strong><span> The CIDR range that is provided for the VPC configuration is only an example. Students can use a different range as allowed by the lab environment.</span></p></li><li><p><span>Choose </span><strong><span>Create VPC</span></strong><span>.</span></p></li></ul></li><li><p><span>Update the settings for the VPC:</span></p><ul><li><span>Choose </span><strong><span>Actions</span></strong><span> &gt; </span><strong><span>Edit VPC settings</span></strong><span>.</span></li><li><span>In the </span><strong><span>DNS settings</span></strong><span> section, select </span><strong><span>Enable DNS hostnames</span></strong><span>.</span></li><li><span>Choose </span><strong><span>Save</span></strong><span>.</span></li></ul></li><li><p><span>In the navigation pane, choose </span><strong><span>Internet gateways</span></strong><span>, and configure the following:</span></p><ul><li><span>Choose </span><strong><span>Create internet gateway</span></strong><span>.</span></li><li><strong><span>Name tag:</span></strong><span> Enter </span><code>CapstoneIGW</code></li><li><span>Choose </span><strong><span>Create internet gateway</span></strong><span>.</span></li></ul></li><li><p><span>Attach the internet gateway to the VPC:</span></p><ul><li><span>Choose </span><strong><span>Actions</span></strong><span> &gt; </span><strong><span>Attach to VPC</span></strong><span>.</span></li><li><strong><span>Available VPCs:</span></strong><span> Choose </span><strong><span>CapstoneVPC</span></strong><span>.</span></li><li><span>Choose </span><strong><span>Attach internet gateway</span></strong><span>.</span></li></ul></li><li><p><span>In the navigation pane, choose </span><strong><span>Subnets</span></strong><span>, and configure the following:</span></p><ul><li><span>Choose </span><strong><span>Create subnet</span></strong><span>.</span></li><li><strong><span>VPC ID:</span></strong><span> Choose </span><strong><span>CapstoneVPC</span></strong><span>.</span></li><li><strong><span>Subnet name:</span></strong><span> Enter </span><code>Public Subnet 1</code></li><li><strong><span>Availability Zone:</span></strong><span> Choose the first Availability Zone from the dropdown list.</span></li><li><strong><span>IPv4 CIDR block:</span></strong><span> Enter </span><code>10.0.1.0/24</code></li><li><span>Choose </span><strong><span>Create subnet</span></strong><span>.</span></li></ul></li><li><p><span>In the navigation pane, choose </span><strong><span>Route tables</span></strong><span>, and configure the following:</span></p><ul><li><p><span>For </span><strong><span>CapstoneVPC</span></strong><span>, choose the </span><strong><span>Route table ID</span></strong><span> link.</span></p><p><i class="fa-solid fa-lightbulb" aria-label="Tip icon"></i><span> </span><strong><span>Tip:</span></strong><span> Look for </span><em><span>CapstoneVPC</span></em><span> in the </span><strong><span>VPC</span></strong><span> column. If the VPC name is not visible, adjust the width of the column.</span></p></li><li><p><span>On the </span><strong><span>Routes</span></strong><span> tab (in the lower pane), choose </span><strong><span>Edit routes</span></strong><span>.</span></p></li><li><p><span>Choose </span><strong><span>Add route</span></strong><span>, and add the following route:</span></p><ul><li><strong><span>Destination:</span></strong><span> Enter </span><code>0.0.0.0/0</code></li><li><strong><span>Target:</span></strong><span> Enter </span><code>Internet Gateway</code><span> and then choose </span><strong><span>CapstoneIGW</span></strong><span>.</span></li></ul></li><li><p><span>Choose </span><strong><span>Save changes</span></strong><span>.</span></p></li></ul></li><li><p><span>In the navigation pane, choose </span><strong><span>Subnets</span></strong><span>, and configure the following:</span></p><ul><li><span>Select </span><strong><span>Public Subnet 1</span></strong><span>.</span></li><li><span>Choose </span><strong><span>Actions</span></strong><span> &gt; </span><strong><span>Edit subnet settings</span></strong><span>.</span></li><li><span>In the </span><strong><span>Auto-assign IP settings</span></strong><span> section, select </span><strong><span>Enable auto-assign public IPv4 address</span></strong><span>.</span></li><li><span>Choose </span><strong><span>Save</span></strong><span>.</span></li></ul></li></ol><p><span>The virtual network resources are now ready. The next step is to put a virtual machine into the network.</span></p><p><strong><span>Reference</span></strong></p><ul><li><span>AWS Academy Cloud Architecting – Lab: Creating a Virtual Private Cloud</span></li></ul><h4 id='task-2-creating-a-virtual-machine'><span>Task 2: Creating a virtual machine</span></h4><p><span>In this task, students create an EC2 instance (virtual machine), and install a web application and database on the instance.</span></p><p><span>The solution is as follows:</span></p><ol start='' ><li><p><span>At the top of the AWS Management Console, in the search bar, search for and choose </span><code>EC2</code></p></li><li><p><span>Choose </span><strong><span>Launch instance</span></strong><span> &gt; </span><strong><span>Launch instance</span></strong><span>, and then configure the following:</span></p></li><li><p><span>In the </span><strong><span>Name and tags</span></strong><span> section, for </span><strong><span>Name</span></strong><span>, enter </span><code>CapstonePOC</code></p></li><li><p><span>In the </span><strong><span>Application and OS Images</span></strong><span> section, under </span><strong><span>Quick Start</span></strong><span>, choose </span><strong><span>Ubuntu</span></strong><span>.</span></p></li><li><p><span>In the </span><strong><span>Key pair</span></strong><span> section, for </span><strong><span>Key pair name</span></strong><span>, choose </span><strong><span>vockey</span></strong><span>.</span></p></li><li><p><span>In the </span><strong><span>Network settings</span></strong><span> section, configure the following:</span></p><ul><li><p><span>Choose </span><strong><span>Edit</span></strong><span>.</span></p></li><li><p><strong><span>VPC:</span></strong><span> Choose </span><strong><span>CapstoneVPC</span></strong><span>.</span></p></li><li><p><strong><span>Auto-assign public IP:</span></strong><span> Choose </span><strong><span>Enable</span></strong><span>.</span></p></li><li><p><strong><span>Firewall (security groups):</span></strong><span> Choose </span><strong><span>Create security group</span></strong><span>.</span></p></li><li><p><strong><span>Security group name:</span></strong><span> Enter </span><code>CapstoneAPPSG</code></p></li><li><p><span>Choose </span><strong><span>Add security group rule</span></strong><span>.</span></p></li><li><p><span>Keep the existing SSH rule, and add two new rules with the following settings:</span></p><ul><li><p><strong><span>New rule 1:</span></strong><span> For </span><strong><span>Type</span></strong><span>, choose </span><strong><span>HTTP</span></strong><span>. For </span><strong><span>Source type</span></strong><span>, choose </span><strong><span>Anywhere</span></strong><span>.</span></p><p><i class="fa-solid fa-note-sticky" aria-label="Note icon"></i><span> </span><strong><span>Note:</span></strong><span> This rule allows traffic from a web browser.</span></p></li><li><p><strong><span>New rule 2:</span></strong><span> For </span><strong><span>Type</span></strong><span>, choose </span><strong><span>MYSQL/Aurora</span></strong><span>. For </span><strong><span>Source</span></strong><span>, enter </span><code>10.0.0.0/16</code></p><p><i class="fa-solid fa-note-sticky" aria-label="Note icon"></i><span> </span><strong><span>Note:</span></strong><span> This rule allows data to be exported from the database in a later task.</span></p></li></ul></li></ul></li></ol><ol start='7' ><li><p><span>Expand the </span><strong><span>Advanced details</span></strong><span> section.</span></p></li><li><p><span>For </span><strong><span>User data</span></strong><span>, copy and paste the following code:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">#!/bin/bash -xe</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">apt update <span class="cm-attribute">-y</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">apt install nodejs unzip <span class="cm-builtin">wget</span> <span class="cm-builtin">npm</span> mysql-server <span class="cm-attribute">-y</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">wget</span> https://aws-tc-largeobjects.s3.us-west-2.amazonaws.com/CUR-TF-200-ACCAP1-1/code.zip <span class="cm-attribute">-P</span> /home/ubuntu</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">cd</span> /home/ubuntu</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">unzip code.zip <span class="cm-attribute">-x</span> <span class="cm-string">"resources/codebase_partner/node_modules/*"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">cd</span> resources/codebase_partner</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">npm</span> install aws aws-sdk</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">mysql <span class="cm-attribute">-u</span> root <span class="cm-attribute">-e</span> <span class="cm-string">"CREATE USER 'nodeapp' IDENTIFIED WITH mysql_native_password BY 'student12'"</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">mysql <span class="cm-attribute">-u</span> root <span class="cm-attribute">-e</span> <span class="cm-string">"GRANT all privileges on *.* to 'nodeapp'@'%';"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">mysql <span class="cm-attribute">-u</span> root <span class="cm-attribute">-e</span> <span class="cm-string">"CREATE DATABASE STUDENTS;"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">mysql <span class="cm-attribute">-u</span> root <span class="cm-attribute">-e</span> <span class="cm-string">"USE STUDENTS; CREATE TABLE students(</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  id INT NOT NULL AUTO_INCREMENT,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  name VARCHAR(255) NOT NULL,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  address VARCHAR(255) NOT NULL,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  city VARCHAR(255) NOT NULL,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  state VARCHAR(255) NOT NULL,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  email VARCHAR(255) NOT NULL,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  phone VARCHAR(100) NOT NULL,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  PRIMARY KEY ( id ));<span class="cm-string">"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">sed</span> <span class="cm-attribute">-i</span> <span class="cm-string">'s/.*bind-address.*/bind-address = 0.0.0.0/'</span> /etc/mysql/mysql.conf.d/mysqld.cnf</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">systemctl enable mysql</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">service</span> mysql <span class="cm-builtin">restart</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">export</span> <span class="cm-def">APP_DB_HOST</span><span class="cm-operator">=</span><span class="cm-quote">$(curl http://169.254.169.254/latest/meta-data/local-ipv4)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">export</span> <span class="cm-def">APP_DB_USER</span><span class="cm-operator">=</span>nodeapp</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">export</span> <span class="cm-def">APP_DB_PASSWORD</span><span class="cm-operator">=</span>student12</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">export</span> <span class="cm-def">APP_DB_NAME</span><span class="cm-operator">=</span>STUDENTS</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">export</span> <span class="cm-def">APP_PORT</span><span class="cm-operator">=</span><span class="cm-number">80</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">npm</span> <span class="cm-builtin">start</span> &amp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-string">'#!/bin/bash -xe</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">cd</span> /home/ubuntu/resources/codebase_partner</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">export</span> <span class="cm-def">APP_PORT</span><span class="cm-operator">=</span><span class="cm-number">80</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">npm</span> <span class="cm-builtin">start</span><span class="cm-string">' &gt; /etc/rc.local</span></span></pre><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">chmod</span> <span class="cm-operator">+</span>x /etc/rc.local</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 792px;"></div><div class="CodeMirror-gutters" style="display: none; height: 792px;"></div></div></div></pre><p><i class="fa-solid fa-circle-exclamation" aria-label="Important icon"></i><span> </span><strong><span>Important:</span></strong><span> Check the formatting of the script after copying it into the user data field. If the code lines appear to be broken, try copying the code from the </span><a href='https://aws-tc-largeobjects.s3.us-west-2.amazonaws.com/CUR-TF-200-ACCAP1-1-DEV/1-lab-capstone-project-1/s3/UserdataScript-phase-2.sh'><span>SolutionCodePOC</span></a><span> file.</span></p><p><i class="fa-solid fa-note-sticky" aria-label="Note icon"></i><span> </span><strong><span>Note:</span></strong><span> This script installs Node.js, the student records application (website, JavaScript, CSS, and other files), and the MySQL database on the EC2 instance. </span></p></li><li><p><span>Keep the default values for all other settings, and choose </span><strong><span>Launch instance</span></strong><span>.</span></p></li></ol><p><i class="fa-solid fa-circle-exclamation" aria-label="Important icon"></i><span> </span><strong><span>Important:</span></strong><span> Before moving to the next task, confirm that the instance is in the </span><em><span>Running</span></em><span> state and that the </span><strong><span>Status check</span></strong><span> column says &quot;2/2 checks passed.&quot; This will take a few minutes.</span></p><h4 id='task-3-testing-the-deployment'><span>Task 3: Testing the deployment</span></h4><p><span>In this task, students test the deployed application to ensure that they can access it and it is functional.</span></p><p><span>The solution is as follows:</span></p><ol start='' ><li><p><span>To test the web application, access it from the internet by using the </span><strong><span>Public IPv4 address</span></strong><span> or </span><strong><span>Public IPv4 DNS</span></strong><span> of the CapstonePOC instance.</span></p><p><strong><span>Note:</span></strong><span> Ensure to use http (instead of https) while accessing the web application from the browser.</span></p></li><li><p><span>Perform a few tasks, such as adding new student records, editing records, and deleting records. Keep at least one record in the database so that you have data to migrate to a new database in a later task.</span></p></li></ol><p><span>Students now have a functional website that is running on an EC2 instance.</span></p><p><span>The architecture that students have created so far was quick to build, with few components and a low cost. This approach would be suitable for a proof of concept (POC). However, a monolithic architecture, where all components exist on one virtual machine, is not flexible and is difficult to scale. In the next phase, students will separate the various layers.</span></p><h3 id='phase-3-decoupling-the-application-components'><span>Phase 3: Decoupling the application components</span></h3><p><span>After the POC is built on a single virtual machine and is functioning as expected, students proceed to the next level of design to decouple the application and database layers. Separating the layers provides flexibility to the architecture and the ability to scale each layer independently. Security can also be implemented for both layers to enhance the security posture.</span></p><p><span>The following diagram shows how the architecture might look like after the components are decoupled.</span></p><p><img src="images/Phase-III-arc.png" referrerpolicy="no-referrer" alt="Phase 3 Architecture Diagram"></p><p>&nbsp;</p><h4 id='task-1-changing-the-vpc-configuration'><span>Task 1: Changing the VPC configuration</span></h4><p><span>In this task, students modify the network configuration to host an Amazon RDS database separately from the web application.</span></p><p><span>The solution is as follows:</span></p><ol start='' ><li><p><span>At the top of the AWS Management Console, in the search bar, search for and choose </span><code>VPC</code></p></li><li><p><span>Create a new </span><em><span>private</span></em><span> subnet in CapstoneVPC:</span></p><ul><li><span>In the navigation pane, choose </span><strong><span>Subnets</span></strong><span>.</span></li><li><span>Choose </span><strong><span>Create subnet</span></strong><span>.</span></li><li><strong><span>VPC ID:</span></strong><span> Choose </span><strong><span>CapstoneVPC</span></strong><span>.</span></li><li><strong><span>Subnet name:</span></strong><span> Enter </span><code>Private Subnet 1</code></li><li><strong><span>Availability Zone:</span></strong><span> Choose the same Availability Zone that was used for the EC2 instance.</span></li><li><strong><span>IPv4 CIDR block:</span></strong><span> Enter </span><code>10.0.2.0/24</code></li><li><span>Choose </span><strong><span>Create subnet</span></strong><span>.</span></li></ul></li></ol><p><span>Now, students need to create a custom route table. They will associate new subnets with the new route table to make the subnets private and accessible only within the VPC.</span></p><ol start='2' ><li><p><span>Create a route table:</span></p><ul><li><p><span>In the navigation pane, choose </span><strong><span>Route tables</span></strong><span>.</span></p></li><li><p><span>Choose </span><strong><span>Create route table</span></strong><span>.</span></p></li><li><p><strong><span>Name:</span></strong><span> Enter </span><code>CapstonePrivateRT</code></p></li><li><p><strong><span>VPC:</span></strong><span> Choose </span><strong><span>CapstoneVPC</span></strong><span>.</span></p></li><li><p><span>Choose </span><strong><span>Create route table</span></strong><span>.</span></p></li><li><p><span>On the </span><strong><span>Routes</span></strong><span> tab, confirm that </span><em><span>only one</span></em><span> route is listed and that it has the following settings:</span></p><ul><li><strong><span>Destination</span></strong><span> is </span><strong><span>10.0.0.0/16</span></strong><span>.</span></li><li><strong><span>Target</span></strong><span> is </span><strong><span>local</span></strong><span>.</span></li></ul></li></ul></li></ol><p><span>Now, students need to create another </span><em><span>private</span></em><span> subnet to support a new database.</span></p><ol start='3' ><li><p><span>Create another new </span><em><span>private</span></em><span> subnet in CapstoneVPC:</span></p><ul><li><span>In the navigation pane, choose </span><strong><span>Subnets</span></strong><span>.</span></li><li><span>Choose </span><strong><span>Create subnet</span></strong><span>.</span></li><li><strong><span>VPC ID:</span></strong><span> Choose </span><strong><span>CapstoneVPC</span></strong></li><li><strong><span>Subnet name:</span></strong><span> Enter </span><code>Private Subnet 2</code></li><li><strong><span>Availability Zone:</span></strong><span> Choose a </span><em><span>different</span></em><span> Availability Zone than the one that Public Subnet 1 and the CapstonePOC instance are in.</span></li><li><strong><span>IPv4 CIDR block:</span></strong><span> Enter </span><code>10.0.4.0/24</code></li><li><span>Choose </span><strong><span>Create subnet</span></strong><span>.</span></li></ul></li><li><p><span>Associate a route table to the two private subnets:</span></p><ul><li><span>In the list of subnets, choose the </span><strong><span>Subnet ID</span></strong><span> link for Private Subnet 2.</span></li><li><span>Choose the </span><strong><span>Route table</span></strong><span> tab.</span></li><li><span>Choose </span><strong><span>Edit route table association</span></strong><span>.</span></li><li><span>For </span><strong><span>Route table ID</span></strong><span>, choose </span><strong><span>CapstonePrivateRT</span></strong><span>.</span></li><li><span>Choose </span><strong><span>Save</span></strong><span>.</span></li><li><span>Repeat these steps to associate CapstonePrivateRT with Private Subnet 1.</span></li></ul></li></ol><p><span>The VPC and network are now reconfigured with private subnets in two Availability Zones to host the Amazon RDS database.</span></p><p><strong><span>Reference</span></strong></p><ul><li><span>AWS Academy Cloud Architecting – Lab: Creating a Virtual Private Cloud</span></li></ul><h4 id='task-2-creating-and-configuring-the-amazon-rds-database'><span>Task 2: Creating and configuring the Amazon RDS database</span></h4><p><span>In this task, students configure the Amazon RDS database and create a security group (firewall) for it.</span></p><p><span>The solution is as follows:</span></p><ol start='' ><li><p><span>Create a security group for the database:</span></p><ul><li><p><span>At the top of the AWS Management Console, in the search bar, search for and choose </span><code>EC2</code></p></li><li><p><span>In the navigation pane, choose </span><strong><span>Security Groups</span></strong><span>.</span></p></li><li><p><span>Choose </span><strong><span>Create security group</span></strong><span>, and configure the following:</span></p><ul><li><p><strong><span>Security group name</span></strong><span>: Enter </span><code>CapstoneDBSG</code></p></li><li><p><strong><span>Description:</span></strong><span> Enter </span><code>Security group for database</code></p></li><li><p><strong><span>VPC:</span></strong><span> Start to enter </span><code>CapstoneVPC</code><span> and choose it when it appears.</span></p></li><li><p><span>In the </span><strong><span>Inbound rules</span></strong><span> section, choose </span><strong><span>Add rule</span></strong><span> and configure the following:</span></p><ul><li><strong><span>Type:</span></strong><span> Choose </span><strong><span>MYSQL/Aurora</span></strong><span>.</span></li><li><strong><span>Source:</span></strong><span> Enter </span><code>10.0.0.0/16</code><span> in the field to the right of </span><strong><span>Custom</span></strong><span>.</span></li></ul></li><li><p><span>Choose </span><strong><span>Create security group</span></strong><span>.</span></p></li></ul></li></ul></li><li><p><span>Create the Amazon RDS database:</span></p><ul><li><p><span>At the top of the AWS Management Console, in the search bar, search for and choose </span><code>RDS</code></p></li><li><p><span>Choose </span><strong><span>Create database</span></strong><span>.</span></p></li><li><p><span>In the </span><strong><span>Engine options</span></strong><span> section, configure the following:</span></p><ul><li><strong><span>Engine type:</span></strong><span> Choose </span><strong><span>MySQL</span></strong><span>.</span></li><li><strong><span>Engine version:</span></strong><span> Keep the default.</span></li></ul></li><li><p><span>In the </span><strong><span>Templates</span></strong><span> section, choose </span><strong><span>Free tier</span></strong><span>.</span></p></li><li><p><span>In the </span><strong><span>Settings</span></strong><span> section, configure the following:</span></p><ul><li><strong><span>DB instance identifier:</span></strong><span> Enter </span><code>CapstoneDB</code></li><li><strong><span>Master username:</span></strong><span> Enter </span><code>nodeapp</code></li><li><strong><span>Master password:</span></strong><span> Enter </span><code>student12</code><span> and then enter the same in the next field to confirm the password.</span></li></ul></li><li><p><span>In the </span><strong><span>Instance configuration</span></strong><span> section, for </span><strong><span>DB instance class</span></strong><span>, keep the default of </span><strong><span>db.t3.micro</span></strong><span>.</span></p></li><li><p><span>In the </span><strong><span>Storage</span></strong><span> section, for </span><strong><span>Allocated storage</span></strong><span>, enter </span><code>20</code><span> GiB.</span></p></li><li><p><span>In the </span><strong><span>Connectivity</span></strong><span> section, configure the following:</span></p><ul><li><strong><span>Virtual private cloud (VPC):</span></strong><span> Choose </span><strong><span>CapstoneVPC</span></strong><span>.</span></li><li><strong><span>Public access:</span></strong><span> Choose </span><strong><span>No</span></strong><span>.</span></li><li><strong><span>VPC security group:</span></strong><span> Keep </span><strong><span>Choose existing</span></strong><span> selected.</span></li><li><strong><span>Existing VPC security groups:</span></strong><span> Remove the </span><strong><span>default</span></strong><span> group. </span><em><span>Add</span></em><span> the </span><strong><span>CapstoneDBSG</span></strong><span> group.</span></li><li><strong><span>Availability Zone:</span></strong><span> Choose the first Availability Zone from the dropdown list.</span></li></ul></li><li><p><span>In the </span><strong><span>Monitoring</span></strong><span> section, clear </span><strong><span>Enable Enhanced monitoring</span></strong><span> if it is selected.</span></p></li><li><p><span>Expand the </span><strong><span>Additional configuration</span></strong><span> section, and for </span><strong><span>Initial database name</span></strong><span>, enter </span><code>STUDENTS</code></p><p><i class="fa-solid fa-note-sticky" aria-label="Note icon"></i><span> </span><strong><span>Note:</span></strong><span> Keep all other values as the default. You can modify a few of the parameters as needed after creating the database.</span></p></li><li><p><span>Choose </span><strong><span>Create database</span></strong><span>.</span></p></li></ul></li></ol><p><i class="fa-solid fa-circle-exclamation" aria-label="Important icon"></i><span> </span><strong><span>Important:</span></strong><span> Before moving to the next step, confirm that the database status is </span><em><span>Available</span></em><span>. It will take a few minutes.</span></p><ol start='3' ><li><p><span>When the database is available, find and record the RDS database endpoint:</span></p><ul><li><span>From the list of databases, choose the </span><strong><span>DB identifier</span></strong><span> link for </span><strong><span>capstonedb</span></strong><span>.</span></li><li><span>On the </span><strong><span>Connectivity &amp; security</span></strong><span> tab, under </span><strong><span>Endpoint &amp; port</span></strong><span>, record the </span><strong><span>Endpoint</span></strong><span> value to use later.</span></li></ul></li></ol><p><strong><span>Reference</span></strong></p><ul><li><span>AWS Academy Cloud Foundations – Lab: Build Your DB Server and Interact With Your DB Using an App</span></li></ul><h4 id='task-3-configuring-the-development-environment'><span>Task 3: Configuring the development environment</span></h4><p><span>In this task, students set up an AWS Cloud9 development environment to perform AWS Command Line Interface (AWS CLI) operations.</span></p><p><span>The solution is as follows:</span></p><ol start='' ><li><p><span>At the top of the AWS Management Console, in the search bar, search for and choose </span><code>Cloud9</code></p></li><li><p><span>Choose </span><strong><span>Create environment</span></strong><span>, and then configure the following:</span></p><ul><li><p><strong><span>Name:</span></strong><span> Enter </span><code>CapstoneIDE</code></p></li><li><p><strong><span>Environment type:</span></strong><span> Choose </span><strong><span>New EC2 instance</span></strong><span>.</span></p></li><li><p><strong><span>Instance type:</span></strong><span> Choose </span><strong><span>t2.micro</span></strong><span>.</span></p></li><li><p><span>In the </span><strong><span>Network settings</span></strong><span> section, for </span><strong><span>Connection</span></strong><span>, choose </span><strong><span>Secure Shell (SSH)</span></strong><span>.</span></p></li><li><p><span>Expand the </span><strong><span>VPC settings</span></strong><span> section, and configure the following:</span></p><ul><li><strong><span>Amazon Virtual Private Cloud (VPC):</span></strong><span> Choose </span><strong><span>CapstoneVPC</span></strong><span>.</span></li><li><strong><span>Subnet:</span></strong><span> Choose </span><strong><span>Public Subnet 1</span></strong><span>. </span></li></ul></li><li><p><span>Keep all other default settings.</span></p></li><li><p><span>Choose </span><strong><span>Create</span></strong><span>.</span></p></li></ul></li></ol><p><i class="fa-solid fa-circle-exclamation" aria-label="Important icon"></i><span> </span><strong><span>Important:</span></strong><span> Before moving to the next task, wait for the AWS Cloud9 environment to be created. It will take a few minutes.</span></p><p><span>Students should use this AWS Cloud9 development environment to perform tasks that require them to run AWS CLI commands. </span></p><p><strong><span>Reference</span></strong></p><ul><li><a href='https://docs.aws.amazon.com/cloud9/latest/user-guide/create-environment-main.html'><span>Creating Cloud9 Environment</span></a></li></ul><h4 id='task-4-provisioning-secrets-manager'><span>Task 4: Provisioning Secrets Manager</span></h4><p><span>In this task, students provision secrets in AWS Secrets Manager to store the database credentials. The web application will use these credentials to communicate with the RDS database instance.</span></p><p><span>The solution is as follows:</span></p><ol start='' ><li><p><span>In the AWS Cloud9 console, open the CapstoneIDE environment.</span></p></li><li><p><span>In the terminal, to create secrets, run the following command. Replace </span><em><span>&lt;</span><span>rds-endpoint</span><span>&gt;</span></em><span> with the endpoint of the CapstoneDB RDS database:</span></p><p><i class="fa-solid fa-circle-exclamation" aria-label="Important icon"></i><span> </span><strong><span>Important:</span></strong><span> Use the same resource names that are provided in the instructions. Do not modify them.</span></p><p><i class="fa-solid fa-note-sticky" aria-label="Note icon"></i><span> </span><strong><span>Note:</span></strong><span> If the command appears to be broken, try copying the command from </span><em><span>Script-1</span></em><span> in the </span><a href='https://aws-tc-largeobjects.s3.us-west-2.amazonaws.com/CUR-TF-200-ACCAP1-1-DEV/1-lab-capstone-project-1/s3/cloud9-scripts.yml'><span>AWS Cloud9 Scripts</span></a><span> file.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#Replace &lt;rds-endpoint&gt; with the endpoint from the RDS database (CapstoneDB)</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#Only replace the values mentioned and keep others 'as is'</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">aws secretsmanager create-secret \</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-attribute">--name</span> Mydbsecret \</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-attribute">--description</span> <span class="cm-string">"Database secret for web app"</span> \</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-attribute">--secret-string</span> <span class="cm-string">"{\"user\":\"nodeapp\",\"password\":\"student12\",\"host\":\"&lt;rds-endpoint&gt;\",\"db\":\"STUDENTS\"}"</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 176px;"></div><div class="CodeMirror-gutters" style="display: none; height: 176px;"></div></div></div></pre></li></ol><p><i class="fa-solid fa-note-sticky" aria-label="Note icon"></i><span> </span><strong><span>Note:</span></strong></p><ul><li><span>The secret that is created in this step stores database credentials, which the web application will use through an AWS Identity and Access Management (IAM) role named </span><em><span>LabRole</span></em><span>. This enhances the security posture by not storing credentials in the application or the database.</span></li><li><em><span>LabRole</span></em><span> was pre-created in the lab environment. The role facilitates secure interactions between AWS services. The role already includes the appropriate permissions policies.</span></li></ul><p><strong><span>Reference:</span></strong></p><ul><li><span>&quot;create-secret&quot; in the </span><a href='https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/create-secret.html'><span>AWS CLI Command Reference for AWS Secrets Manager</span></a></li></ul><h4 id='task-5-provisioning-a-new-instance-for-the-web-server'><span>Task 5: Provisioning a new instance for the web server</span></h4><p><span>In this task, students will provision a new EC2 instance in the </span><em><span>public</span></em><span> subnet and install the web application.</span></p><p><span>The solution is as follows:</span></p><ol start='' ><li><p><span>At the top of the AWS Management Console, in the search bar, search for and choose </span><code>EC2</code></p></li><li><p><span>Choose </span><strong><span>Launch instance</span></strong><span> &gt; </span><strong><span>Launch instance</span></strong><span>, and then configure the following:</span></p><ul><li><p><span>In the </span><strong><span>Name and tags</span></strong><span> section, for </span><strong><span>Name</span></strong><span>, enter </span><code>CapstoneAppServer</code></p></li><li><p><span>In the </span><strong><span>Application and OS Images</span></strong><span> section, under </span><strong><span>Quick Start</span></strong><span>, choose </span><strong><span>Ubuntu</span></strong><span>.</span></p></li><li><p><span>In the </span><strong><span>Instance type</span></strong><span> section, for </span><strong><span>Instance type</span></strong><span>, choose </span><strong><span>t2.micro</span></strong><span>.</span></p></li><li><p><span>In the </span><strong><span>Key pair</span></strong><span> section, for </span><strong><span>Key pair name</span></strong><span>, choose </span><strong><span>vockey</span></strong><span>.</span></p></li><li><p><span>In the </span><strong><span>Network settings</span></strong><span> section, configure the following:</span></p><ul><li><span>Choose </span><strong><span>Edit</span></strong><span>.</span></li><li><strong><span>VPC:</span></strong><span> Choose </span><strong><span>CapstoneVPC</span></strong><span>.</span></li><li><strong><span>Subnet:</span></strong><span> Choose </span><strong><span>Public Subnet 1</span></strong><span>.</span></li><li><strong><span>Auto-assign public IP:</span></strong><span> Choose </span><strong><span>Enable</span></strong><span>.</span></li><li><strong><span>Firewall (security group):</span></strong><span> Choose </span><strong><span>Select existing security group</span></strong><span>.</span></li><li><strong><span>Common security groups:</span></strong><span> Choose </span><strong><span>CapstoneAPPSG</span></strong><span>.</span></li></ul></li><li><p><span>Expand the </span><strong><span>Advanced details</span></strong><span> section, and configure the following:</span></p><ul><li><p><strong><span>IAM instance profile:</span></strong><span> Choose </span><strong><span>LabInstanceProfile</span></strong><span>.</span></p></li><li><p><strong><span>User data:</span></strong><span> Copy and paste the following code:</span></p><p><i class="fa-solid fa-lightbulb" aria-label="Tip icon"></i><span> </span><strong><span>Tip:</span></strong><span> The user data code is also available in the </span><a href='https://aws-tc-largeobjects.s3.us-west-2.amazonaws.com/CUR-TF-200-ACCAP1-1-DEV/1-lab-capstone-project-1/s3/UserdataScript-phase-3.sh'><span>Solution Code for the App Server</span></a><span> file.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded md-focus" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">#!/bin/bash -xe</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">apt update <span class="cm-attribute">-y</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">apt install nodejs unzip <span class="cm-builtin">wget</span> <span class="cm-builtin">npm</span> mysql-client <span class="cm-attribute">-y</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">wget</span> https://aws-tc-largeobjects.s3.us-west-2.amazonaws.com/CUR-TF-200-ACCAP1-1-DEV/code.zip <span class="cm-attribute">-P</span> /home/ubuntu</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">cd</span> /home/ubuntu</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">unzip code.zip <span class="cm-attribute">-x</span> <span class="cm-string">"resources/codebase_partner/node_modules/*"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">cd</span> resources/codebase_partner</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">npm</span> install aws aws-sdk</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">export</span> <span class="cm-def">APP_PORT</span><span class="cm-operator">=</span><span class="cm-number">80</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">npm</span> <span class="cm-builtin">start</span> &amp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-string">'#!/bin/bash -xe</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">cd</span> /home/ubuntu/resources/codebase_partner</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">export</span> <span class="cm-def">APP_PORT</span><span class="cm-operator">=</span><span class="cm-number">80</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">npm</span> <span class="cm-builtin">start</span><span class="cm-string">' &gt; /etc/rc.local</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">chmod</span> <span class="cm-operator">+</span>x /etc/rc.local</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 352px;"></div><div class="CodeMirror-gutters" style="display: none; height: 352px;"></div></div></div></pre></li></ul></li><li><p><span>Choose </span><strong><span>Launch instance</span></strong><span>.</span></p></li></ul></li></ol><p><i class="fa-solid fa-note-sticky" aria-label="Note icon"></i><span> </span><strong><span>Note:</span></strong></p><ul><li><span>The user data script will install the web application on the instance.</span></li><li><em><span>LabInstanceProfile</span></em><span> was created for this project and is used to facilitate communication between services as needed and as allowed in the project environment. A best practice is to use separate IAM roles for different AWS services; however, the same role can be used in this project.</span></li></ul><p><i class="fa-solid fa-circle-exclamation" aria-label="Important icon"></i><span> </span><strong><span>Important:</span></strong><span> Before moving to the next step, confirm that the instance is in the </span><em><span>Running</span></em><span> state.</span></p><ol start='3' ><li><p><span>Copy the public IP address of the instance, and open it in a browser to make sure that the web application is accessible and running.</span></p><p><strong><span>Tip:</span></strong><span> Ensure to use http (instead of https) while accessing the web application from the browser.</span></p><p><strong><span>Note:</span></strong><span> If students encounter issues accessing the application, ensure that the secret is configured correctly in earlier step.</span></p></li></ol><p><strong><span>Reference</span></strong></p><ul><li><span>AWS Academy Cloud Foundations – Lab: Build Your DB Server and Interact With Your DB Using an App</span></li></ul><h4 id='task-6-migrating-the-database'><span>Task 6: Migrating the database</span></h4><p><span>In this task, students migrate the data that is stored in the MySQL database on the original EC2 instance into the new RDS database.</span></p><p><span>The solution is as follows:</span></p><ol start='' ><li><p><span>Open the AWS Cloud9 IDE.</span></p></li><li><p><span>Export data from the database on the original EC2 instance:</span></p><ul><li><p><span>Run the following command. Replace </span><em><span>&lt;</span><span>EC2instancePrivateip</span><span>&gt;</span></em><span> with the private IPv4 address of the </span><em><span>CapstonePOC</span></em><span> instance:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="sql"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="sql"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">mysqldump <span class="cm-operator">-</span>h <span class="cm-operator">&lt;</span>EC2instancePrivateip<span class="cm-operator">&gt;</span> <span class="cm-operator">-</span>u nodeapp <span class="cm-operator">-</span>p <span class="cm-operator">--</span><span class="cm-keyword">databases</span> STUDENTS <span class="cm-operator">&gt;</span> <span class="cm-keyword">data</span><span class="cm-variable-2">.sql</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 22px;"></div><div class="CodeMirror-gutters" style="display: none; height: 22px;"></div></div></div></pre></li><li><p><span>When prompted, provide the password </span><code>student12</code></p><p><i class="fa-solid fa-note-sticky" aria-label="Note icon"></i><span> </span><strong><span>Note:</span></strong><span> The password for the database was configured in the user data script that was used to create the EC2 instance in an earlier task.</span></p></li></ul></li><li><p><span>Import the exported data into the RDS database:</span></p><ul><li><p><span>Run the following command. Replace </span><em><span>&lt;</span><span>RDSEndpoint</span><span>&gt;</span></em><span> with the endpoint of the CapstoneDB RDS database:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="sql"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="sql"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">mysql <span class="cm-operator">-</span>h <span class="cm-operator">&lt;</span>RDSEndpoint<span class="cm-operator">&gt;</span> <span class="cm-operator">-</span>u nodeapp <span class="cm-operator">-</span>p  STUDENTS <span class="cm-operator">&lt;</span> <span class="cm-keyword">data</span><span class="cm-variable-2">.sql</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 22px;"></div><div class="CodeMirror-gutters" style="display: none; height: 22px;"></div></div></div></pre></li><li><p><span>When prompted, provide the password for the CapstoneDB RDS database. The password was configured when the RDS DB instance was created.</span></p></li></ul></li><li><p><strong><span>Optional step:</span></strong><span> If a student used the same EC2 instance to host the web application code, they can turn off the old database by using the following steps. Alternatively, the student can stop the CapstonePOC instance:</span></p><ul><li><p><span>Connect to the </span><em><span>CapstonePOC</span></em><span> EC2 instance by using EC2 Instance Connect.</span></p></li><li><p><span>Run the following script:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="sql"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="sql"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#Run this on the CapstonePOC instance</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">sudo systemctl stop mysql</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">sudo apt<span class="cm-operator">-</span><span class="cm-keyword">get</span> <span class="cm-keyword">purge</span> mysql<span class="cm-operator">-</span><span class="cm-keyword">server</span> mysql<span class="cm-operator">-</span>common mysql<span class="cm-operator">-</span><span class="cm-keyword">server</span><span class="cm-operator">-</span>core<span class="cm-operator">-*</span> mysql<span class="cm-operator">-</span>client<span class="cm-operator">-</span>core<span class="cm-operator">-*</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">sudo rm <span class="cm-operator">-</span>rf /etc/mysql /var/lib/mysql</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 154px;"></div><div class="CodeMirror-gutters" style="display: none; height: 154px;"></div></div></div></pre></li></ul></li></ol><p><i class="fa-solid fa-lightbulb" aria-label="Tip icon"></i><span> </span><strong><span>Tip:</span></strong><span> After migrating the data from the database on the CapstonePOC instance, you can stop that instance.</span></p><p><strong><span>Reference:</span></strong></p><ul><li><span>AWS Academy Cloud Architecting – Lab: Migrating a Database to Amazon RDS</span></li></ul><h4 id='task-7-testing-the-application'><span>Task 7: Testing the application</span></h4><p><span>In this task, students access the application and perform a few tasks to test it, as they did previously. The application should work the same as before.</span></p><p>&nbsp;</p><p><span>In this phase, students implemented decoupling by separating the web application from the database. Students also improved the security posture by placing the servers in separate subnets and storing the database access credentials in Secrets Manager instead of hardcoding them within the web application.</span></p><h3 id='phase-4-implementing-high-availability-and-scalability'><span>Phase 4: Implementing high availability and scalability</span></h3><p><span>After implementing decoupling, students need to make the application highly available and scalable. To do so, they need to use load balancing and automatic scaling services.</span></p><p><span>The following diagram shows the final architecture, with all the components and services integrated to achieve the objective.</span></p><p><img src="images/Final-arc.png" referrerpolicy="no-referrer" alt="Final Architecture Diagram"></p><h4 id='task-1-creating-an-application-load-balancer'><span>Task 1: Creating an Application Load Balancer</span></h4><p><span>In this task, students adjust the network configuration to add a new public subnet and create an Application Load Balancer to distribute application traffic across two Availability Zones.</span></p><p><span>The solution is as follows:</span></p><ol start='' ><li><p><span>At the top of the AWS Management Console, in the search bar, search for and choose </span><code>VPC</code></p></li><li><p><span>Create a new </span><em><span>public</span></em><span> subnet in CapstoneVPC:</span></p><ul><li><p><span>In the navigation pane, choose </span><strong><span>Subnets</span></strong><span>.</span></p></li><li><p><span>Choose </span><strong><span>Create subnet</span></strong><span>.</span></p></li><li><p><strong><span>VPC ID:</span></strong><span> Choose </span><strong><span>CapstoneVPC</span></strong><span>.</span></p></li><li><p><strong><span>Subnet name:</span></strong><span> Enter </span><code>Public Subnet 2</code></p></li><li><p><strong><span>Availability Zone:</span></strong><span> Choose the same Availability Zone that </span><em><span>Private Subnet 2</span></em><span> was created in.</span></p></li><li><p><strong><span>IPv4 CIDR block:</span></strong><span> Enter </span><code>10.0.3.0/24</code></p></li><li><p><span>Choose </span><strong><span>Create subnet</span></strong><span>.</span></p><p><i class="fa-solid fa-note-sticky" aria-label="Note icon"></i><span> </span><strong><span>Note:</span></strong><span> This Public subnet 2 is required to make the web server available in another Availability Zone to implement high availability.</span></p></li></ul></li><li><p><span>After creating Public Subnet 2, edit the settings:</span></p><ul><li><span>Select </span><strong><span>Public Subnet 2</span></strong><span>.</span></li><li><span>Choose </span><strong><span>Actions</span></strong><span> &gt; </span><strong><span>Edit subnet settings</span></strong><span>.</span></li><li><span>In the </span><strong><span>Auto-assign IP settings</span></strong><span> section, select </span><strong><span>Enable auto-assign public IPv4 address</span></strong><span>.</span></li><li><span>Choose </span><strong><span>Save</span></strong><span>.</span></li></ul></li><li><p><span>In the main route table for CapstoneVPC, confirm that Public Subnet 2 is associated with the route table.</span></p><ul><li><p><span>Select </span><strong><span>Public Subnet 2</span></strong><span>.</span></p></li><li><p><span>Choose </span><strong><span>Route table</span></strong><span> from the pane below.</span></p></li><li><p><span>Confirm that the route table has two routes</span></p><ul><li><span>One for </span><strong><span>10.0.0.0/16</span></strong></li><li><span>the other for </span><strong><span>0.0.0.0/0</span></strong></li></ul></li></ul></li></ol><p><span>   </span><i class="fa-solid fa-note-sticky" aria-label="Note icon"></i><span> </span><strong><span>Note:</span></strong><span> The main route table contains a route to the internet gateway.</span></p><ol start='5' ><li><span>At the top of the AWS Management Console, in the search bar, search for and choose </span><code>EC2</code></li></ol><ol start='4' ><li><p><span>In the navigation pane, choose </span><strong><span>Load Balancers</span></strong><span>.</span></p></li><li><p><span>Choose </span><strong><span>Create load balancer</span></strong><span>, and configure the following:</span></p><ul><li><p><span>In the </span><strong><span>Load balancer types</span></strong><span> section, for </span><strong><span>Application Load Balancer</span></strong><span>, choose </span><strong><span>Create</span></strong><span>.</span></p></li><li><p><span>In the </span><strong><span>Basic configuration</span></strong><span> section, for </span><strong><span>Load balancer name</span></strong><span>, enter </span><code>CapstoneALB</code></p></li><li><p><span>In the </span><strong><span>Network mapping</span></strong><span> section, configure the following:</span></p><ul><li><strong><span>VPC:</span></strong><span> Choose </span><strong><span>CapstoneVPC</span></strong><span>.</span></li><li><strong><span>Mappings:</span></strong><span> Select both Availability Zones. The </span><strong><span>Subnet</span></strong><span> dropdown menu appears when an Availability Zone is selected.</span></li><li><strong><span>Subnet:</span></strong><span> For each Availability Zone, select the public subnet.</span></li></ul></li><li><p><span>In the </span><strong><span>Security groups</span></strong><span> section, configure the following:</span></p><ul><li><span>Remove the </span><strong><span>default</span></strong><span> security group.</span></li><li><span>Add the </span><strong><span>CapstoneAPPSG</span></strong><span> security group.</span></li></ul></li><li><p><span>In the </span><strong><span>Listeners and routing</span></strong><span> section, choose </span><strong><span>Create target group</span></strong><span>, which is located below the </span><strong><span>Default action</span></strong><span> field. A new tab or window opens.</span></p></li><li><p><span>In the new tab or window, configure the following:</span></p><ul><li><strong><span>Choose a target type:</span></strong><span> Choose </span><strong><span>Instances</span></strong><span>.</span></li><li><strong><span>Target group name:</span></strong><span> Enter </span><code>CapstoneTG</code></li><li><strong><span>VPC:</span></strong><span> Choose </span><strong><span>CapstoneVPC</span></strong><span>.</span></li><li><span>Keep all other default settings, and choose </span><strong><span>Next</span></strong><span>.</span></li><li><span>At the bottom of the page, choose </span><strong><span>Create target group</span></strong><span>.</span></li><li><span>Return to the tab or window where you started to create the load balancer.</span></li></ul></li></ul><ul><li><p><span>In the </span><strong><span>Listeners and routing</span></strong><span> section, choose the refresh icon, and then choose </span><strong><span>CapstoneTG</span></strong><span> for </span><strong><span>Default action</span></strong><span>.</span></p></li><li><p><span>Choose </span><strong><span>Create load balancer</span></strong><span>.</span></p></li><li><p><span>Choose </span><strong><span>View load balancer</span></strong><span>.</span></p></li><li><p><span>Record the </span><strong><span>DNS name</span></strong><span> for the load balancer. This name will be used as an endpoint to access the website later.</span></p><p><i class="fa-solid fa-note-sticky" aria-label="Note icon"></i><span> </span><strong><span>Note:</span></strong><span> The Application Load Balancer was created without any targets. Students will add targets in the next task, when they implement automatic scaling.</span></p></li></ul></li></ol><p><strong><span>Reference</span></strong></p><ul><li><span>AWS Academy Cloud Architecting – Lab: Creating a Highly Available Environment</span></li></ul><h4 id='task-2-implementing-amazon-ec2-auto-scaling'><span>Task 2: Implementing Amazon EC2 Auto Scaling</span></h4><p><span>In this task, students create a launch configuration and an Auto Scaling group to provide scalability to the application.</span></p><p><span>The solution is as follows:</span></p><ol start='' ><li><p><span>Create an Amazon Machine Image (AMI) of the EC2 instance that hosts the web application, and use it to create the launch configuration for automatic scaling:</span></p><ul><li><span>In the navigation pane, choose </span><strong><span>Instances</span></strong><span>.</span></li><li><span>From the list of instances, select the </span><strong><span>CapstoneAppServer</span></strong><span> instance.</span></li><li><span>Choose </span><strong><span>Actions</span></strong><span> &gt; </span><strong><span>Image and templates</span></strong><span> &gt; </span><strong><span>Create image</span></strong><span>.</span></li><li><span>For </span><strong><span>Image name</span></strong><span>, enter </span><code>CapstoneAMI</code></li><li><span>Choose </span><strong><span>Create image</span></strong><span>.</span></li><li><span>In the banner at the top of the page, choose the link for the AMI name. A new tab or window opens and displays a list of AMIs.</span></li></ul></li></ol><p><i class="fa-solid fa-circle-exclamation" aria-label="Important icon"></i><span> </span><strong><span>Important:</span></strong><span> Before moving to the next step, confirm that the AMI status is </span><em><span>Available</span></em><span>. It will take a few minutes.</span></p><ol start='2' ><li><p><span>Create a launch template:</span></p><ul><li><p><span>In the left navigation pane, under </span><strong><span>Instances</span></strong><span>, and choose </span><strong><span>Launch Templates</span></strong><span>.</span></p></li><li><p><span>Choose </span><strong><span>Create launch template</span></strong><span>.</span></p></li><li><p><span>In the </span><strong><span>Launch template name and description</span></strong><span> section, configure the following:</span></p><ul><li><strong><span>Launch template name:</span></strong><span> Enter </span><code>CapstoneTemplate</code></li><li><strong><span>Template version description:</span></strong><span> </span><code>Web server for Students application</code></li><li><strong><span>Auto Scaling guidance:</span></strong><span> Select </span><strong><span>Provide guidance to help me set up a template that I can use with EC2 Auto Scaling</span></strong><span>.</span></li></ul></li><li><p><span>In the </span><strong><span>Application and OS Images</span></strong><span> section, choose </span><strong><span>My AMIs</span></strong><span>. Notice that CapstoneAMI is already chosen.</span></p></li><li><p><span>In the </span><strong><span>Instance type</span></strong><span> section, for </span><strong><span>Instance type</span></strong><span>, choose </span><strong><span>t3.micro</span></strong><span>.</span></p></li><li><p><span>In the </span><strong><span>Key pair</span></strong><span> section, choose </span><strong><span>vockey</span></strong><span>.</span></p></li><li><p><span>In the </span><strong><span>Network settings</span></strong><span> section, for </span><strong><span>Security groups</span></strong><span>, select </span><strong><span>CapstoneAPPSG</span></strong><span>.</span></p></li><li><p><span>Expand the </span><strong><span>Advanced details</span></strong><span> section.</span></p></li><li><p><span>For </span><strong><span>IAM instance profile</span></strong><span>, choose </span><strong><span>LabInstanceProfile</span></strong><span>.</span></p></li><li><p><span>Choose </span><strong><span>Create launch template</span></strong><span>.</span></p></li><li><p><span>Choose </span><strong><span>View launch templates</span></strong></p></li></ul></li><li><p><span>Create an Auto Scaling group:</span></p><ul><li><p><span>Choose </span><strong><span>CapstoneTemplate</span></strong><span>, and then choose </span><strong><span>Actions</span></strong><span> &gt; </span><strong><span>Create Auto Scaling group</span></strong><span>.</span></p></li><li><p><span>Configure the following settings:</span></p><ul><li><p><strong><span>Auto Scaling group name:</span></strong><span> Enter </span><code>CapstoneAutoScalingGroup</code></p></li><li><p><span>Choose </span><strong><span>Next</span></strong><span>.</span></p></li><li><p><strong><span>VPC:</span></strong><span> Choose </span><strong><span>CapstoneVPC</span></strong><span>.</span></p></li><li><p><strong><span>Availability Zones and subnets:</span></strong><span> Select both Availability Zones that include public subnets.</span></p></li><li><p><span>Choose </span><strong><span>Next</span></strong><span>.</span></p></li><li><p><span>In the </span><strong><span>Load balancing</span></strong><span> section, choose </span><strong><span>Attach to an existing load balancer</span></strong><span>.</span></p></li><li><p><strong><span>Existing load balancer target groups:</span></strong><span> Select </span><strong><span>CapstoneTG</span></strong><span>.</span></p></li><li><p><span>In the </span><strong><span>Health checks</span></strong><span> section, for </span><strong><span>Health check type</span></strong><span>, select </span><strong><span>ELB</span></strong><span>.</span></p></li><li><p><span>Choose </span><strong><span>Next</span></strong><span>.</span></p></li><li><p><span>In the </span><strong><span>Group size</span></strong><span> section, configure the following:</span></p><ul><li><strong><span>Desired capacity:</span></strong><span> Enter </span><code>1</code></li><li><strong><span>Minimum capacity:</span></strong><span> Enter </span><code>1</code></li><li><strong><span>Maximum capacity:</span></strong><span> Enter </span><code>4</code></li></ul></li><li><p><span>In the </span><strong><span>Scaling policies</span></strong><span> section, configure the following:</span></p><ul><li><span>Choose </span><strong><span>Target tracking scaling policy</span></strong><span>.</span></li><li><strong><span>Metric type:</span></strong><span> Choose </span><strong><span>Average CPU utilization</span></strong><span>.</span></li><li><strong><span>Target value:</span></strong><span> Enter </span><code>30</code></li><li><span>Choose </span><strong><span>Next</span></strong><span>.</span></li></ul></li><li><p><span>On the </span><strong><span>Add notifications</span></strong><span> page, choose </span><strong><span>Next</span></strong><span>.</span></p></li><li><p><span>Choose </span><strong><span>Add tag</span></strong><span>, and then configure the following:</span></p><ul><li><strong><span>Key:</span></strong><span> Enter </span><code>Name</code></li><li><strong><span>Value:</span></strong><span> Enter </span><code>Auto Scaling Instance</code></li><li><span>Choose </span><strong><span>Next</span></strong><span>.</span></li></ul></li><li><p><span>On the </span><strong><span>Review</span></strong><span> page, choose </span><strong><span>Create Auto Scaling group</span></strong><span>.</span></p><p><span>After a few minutes, the Auto Scaling group creates a new EC2 instance to meet the minimum that was specified in the scaling policy. The new instance can be viewed in the Amazon EC2 console.</span></p><p><i class="fa-solid fa-note-sticky" aria-label="Note icon"></i><span> </span><strong><span>Note:</span></strong><span> A student can set the </span><strong><span>Target value</span></strong><span> to a lower value if they want automatic scaling to occur more quickly during load testing.</span></p></li></ul></li></ul></li></ol><p><strong><span>Reference</span></strong></p><ul><li><span>AWS Academy Cloud Architecting – Lab: Creating a Highly Available Environment.</span></li></ul><h4 id='task-3-accessing-the-application'><span>Task 3: Accessing the application</span></h4><p><span>In this task, students access the application by using the load balancer URL. Then, they test the application functionality.</span></p><ol start='' ><li><span>Use the DNS name of the load balancer to access the web application.</span></li><li><span>Test the application functionality.</span></li></ol><h4 id='task-4-load-testing-the-application'><span>Task 4: Load testing the application</span></h4><p><span>In this task, students install node packages and perform load testing on the application from the AWS Cloud9 environment.</span></p><p><span>The solution is as follows:</span></p><ol start='' ><li><p><span>To perform a load test on the application and monitor scaling, run the following scripts in the AWS Cloud9 terminal:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="shell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#The following command installs the loadtest package to perform load testing on the application</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">npm</span> install <span class="cm-attribute">-g</span> loadtest</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 66px;"></div><div class="CodeMirror-gutters" style="display: none; height: 66px;"></div></div></div></pre><p><span>After the above command is run and the loadest module is installed,</span></p></li><li><p><span>Run the following script for simulating user load on the application. Wait a few minutes for scaling out to happen.</span></p><ul><li><span>Replace </span><strong><LoadBalancerDNS></strong><span> with the load balancer DNS name.</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="shell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">loadtest <span class="cm-attribute">--rps</span> <span class="cm-number">2000</span> <span class="cm-attribute">-c</span> <span class="cm-number">1000</span> <span class="cm-attribute">-k</span> http://&lt;LoadBalancerDNS&gt;</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 22px;"></div><div class="CodeMirror-gutters" style="display: none; height: 22px;"></div></div></div></pre><p><strong><span>Tip:</span></strong><span> Press Ctrl+C to stop the script after monitoring the scaling activity.</span></p><p><strong><span>Tip:</span></strong><span> Increase the </span><strong><span>rps</span></strong><span> (requests per second) and </span><strong><span>c</span></strong><span>  (connections), and run the load testing script multiple times to see the scaling response to variable user load.</span></p></li></ol><p><i class="fa-solid fa-note-sticky" aria-label="Note icon"></i><span> </span><strong><span>Note:</span></strong><span> It will take several minutes for scaling to occur. Ignore the warnings and let the script run as long as you need.</span></p><ol start='3' ><li><span>Navigate to the instances list in the Amazon EC2 console. Observe that the number of instances increases based on the load to the application.</span></li><li><span>After observing the scaling for some time, stop the script.</span></li><li><span>Observe that the number of instances decreases to the minimum after some time.</span></li></ol><p><strong><span>Note:</span></strong><span> Students can also monitor automatic scaling activity in the Auto Scaling Groups area of the Amazon EC2 console:</span></p><ul><li><span>In the navigation pane, choose </span><strong><span>Auto Scaling Groups</span></strong><span>.</span></li><li><span>Choose the </span><strong><span>Name</span></strong><span> link for CapstoneAutoScalingGroup.</span></li><li><span>Choose the </span><strong><span>Monitoring</span></strong><span> tab.</span></li><li><span>Choose </span><strong><span>1h</span></strong><span> to change the timeframe to 1 hour.</span></li></ul><p><strong><span>Note:</span></strong><span> Notice that the cloudwatch metrics shown on the monitoring tab starts showing data after few minutes. </span></p><p><span>Students have now implemented a highly available and scalable application that is also secure, cost optimized, and high performing.</span></p><p><strong><span>Reference</span></strong></p><ul><li><a href='https://github.com/alexfernandez/loadtest'><span>loadtest Tool Repository on GitHub</span></a></li></ul><h2 id='troubleshooting-tips'><span>Troubleshooting tips</span></h2><p><span>Use the following scenarios to help you troubleshoot when application components do not work as expected:</span></p><ul><li><p><span>The website is not accessible or will not load:</span></p><ul><li><span>Check that the security group allows port 80 for the web server.</span></li><li><span>Check that the web server is running on the EC2 instance.</span></li></ul></li></ul><ul><li><p><span>The website loads, but the application cannot fetch data from the database:</span></p><ul><li><span>In Secrets Manager, check that the secret for the database credentials has the correct RDS database endpoint. </span></li></ul></li><li><p><span>A load balancer was created, but instances have an </span><em><span>Unhealthy</span></em><span> status:</span></p><ul><li><span>Check that the instances are in the public subnets.</span></li><li><span>Ensure that the health check is looking for the appropriate path (for example, &quot;/&quot;, where the web server is running).</span></li><li><span>Check that the security groups allow HTTP traffic on port 80.</span></li></ul></li><li><p><span>The instances are not automatically scaling:</span></p><ul><li><span>Check the minimum, desired, and maximum capacity for the Auto Scaling group.</span></li><li><span>Check whether the policy is configured to scale based on CPU utilization or number of requests.</span></li></ul></li><li><p><span>Troubleshooting for EC2 instances:</span></p><ul><li><span>If you need to log in to an EC2 instance to troubleshoot, use EC2 Instance Connect or another available option.</span></li><li><span>To manually stop or start the Node.js server, run commands in the user data script as </span><em><span>sudo</span></em><span>.</span></li></ul></li><li><p><span>Troubleshooting the AWS Cloud9 instance:</span></p><ul><li><span>If you do not see your Cloud9 environment, ensure that you are in the same Region where you initially created it.</span></li><li><span>Restart the EC2 instance that corresponds to the AWS Cloud9 environment as needed.</span></li></ul><p>&nbsp;</p></li></ul><h2 id='showcase-presentation-template'><span>Showcase presentation template</span></h2><p><span>The Academy Lab Projects – Showcase presentation template is available for students to use to present about their projects. Your students can also use the presentation as a portfolio of their work to demonstrate their cloud skills.</span></p><p><span>The presentation contains the following sections. The suggested timing is for a 15-minute presentation:</span></p><ul><li><span>Introduction: 30 seconds</span></li><li><span>Business scenario overview: 1 minute</span></li><li><span>Solution overview: 5 minutes</span></li><li><span>Architecture diagram of the solution: 2 minutes</span></li><li><span>Demo: 5 minutes</span></li><li><span>Lessons learned: 1 minute and 30 seconds</span></li></ul><p><span>The total time might vary depending on the activity that you want to conduct. For example, you might want students to provide a high-level walk-through of their final solutions instead of a deep-dive into why or how they chose certain services and the steps they used to build their architectures.</span></p><p>&nbsp;</p><h2 id='grading-rubric'><span>Grading rubric</span></h2><p><span>Use the rubric as you see fit. The following are a few suggestions: </span></p><ul><li><span>Ask students to present their solutions in class, and use the rubric to grade their presentations.</span></li><li><span>Share the rubric with students ahead of time so that they can focus on explaining and showing how their solutions meet the criteria. </span></li><li><span>Share the rubric with students, and encourage them to self-assess or give peer feedback before you grade them.</span></li><li><span>You can assign a numerical scale to each level; for example, unsatisfactory (0), needs improvement (1–2), good (3–4), excellent (5).</span></li><li><span>Depending on the services and skills that you want to highlight in the class, you could also assign numeric weights to different criteria; for example, functionality (20 percent), load balanced (15 percent), scalable (15 percent), highly available (15 percent), secure (25 percent), cost optimized (5 percent), and high performing (5 percent).</span></li></ul><p><span>© 2023, Amazon Web Services, Inc. or its affiliates. All rights reserved.</span></p></div></div>
+</body>
+</html>
