@@ -1,0 +1,162 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  Application stack: ALB + Auto Scaling Group using Golden AMI from SSM.
+  Imports VPC and subnet IDs from studentrecords-vpc.
+
+Parameters:
+  VpcStackName:
+    Type: String
+    Default: studentrecords-vpc
+
+  AmiSsmParameterName:
+    Type: String
+    Default: /student-records/golden-ami-id
+
+  ProjectTag:
+    Type: String
+    Default: StudentRecordsApp
+
+  EnvironmentTag:
+    Type: String
+    Default: Dev
+
+  InstanceType:
+    Type: String
+    Default: t3.micro
+
+  DesiredCapacity:
+    Type: Number
+    Default: 2
+
+  MinSize:
+    Type: Number
+    Default: 2
+
+  MaxSize:
+    Type: Number
+    Default: 4
+
+Resources:
+  AlbSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow HTTP from Internet
+      VpcId:
+        Fn::ImportValue: !Sub "${VpcStackName}-VpcId"
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+
+  AppSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow HTTP from ALB
+      VpcId:
+        Fn::ImportValue: !Sub "${VpcStackName}-VpcId"
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          SourceSecurityGroupId: !Ref AlbSecurityGroup
+
+  ApplicationLoadBalancer:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Scheme: internet-facing
+      Type: application
+      Subnets:
+        - Fn::ImportValue: !Sub "${VpcStackName}-PublicSubnet1Id"
+        - Fn::ImportValue: !Sub "${VpcStackName}-PublicSubnet2Id"
+      SecurityGroups:
+        - !Ref AlbSecurityGroup
+
+  AppTargetGroup:
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+    Properties:
+      VpcId:
+        Fn::ImportValue: !Sub "${VpcStackName}-VpcId"
+      Port: 80
+      Protocol: HTTP
+      TargetType: instance
+      HealthCheckPath: /
+
+  HttpListener:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    Properties:
+      LoadBalancerArn: !Ref ApplicationLoadBalancer
+      Port: 80
+      Protocol: HTTP
+      DefaultActions:
+        - Type: forward
+          TargetGroupArn: !Ref AppTargetGroup
+
+  AppInstanceRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ec2.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+
+  AppInstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      Roles:
+        - !Ref AppInstanceRole
+
+  LaunchTemplate:
+    Type: AWS::EC2::LaunchTemplate
+    Properties:
+      LaunchTemplateData:
+        ImageId: !Sub "{{resolve:ssm:${AmiSsmParameterName}}}"
+        InstanceType: !Ref InstanceType
+        SecurityGroupIds:
+          - !Ref AppSecurityGroup
+        IamInstanceProfile:
+          Arn: !GetAtt AppInstanceProfile.Arn
+        UserData:
+          Fn::Base64: |
+            #!/bin/bash
+            systemctl enable httpd
+            systemctl start httpd
+
+  AutoScalingGroup:
+    Type: AWS::AutoScaling::AutoScalingGroup
+    Properties:
+      VPCZoneIdentifier:
+        - Fn::ImportValue: !Sub "${VpcStackName}-PrivateSubnet1Id"
+        - Fn::ImportValue: !Sub "${VpcStackName}-PrivateSubnet2Id"
+      MinSize: !Ref MinSize
+      MaxSize: !Ref MaxSize
+      DesiredCapacity: !Ref DesiredCapacity
+      LaunchTemplate:
+        LaunchTemplateId: !Ref LaunchTemplate
+        Version: !GetAtt LaunchTemplate.LatestVersionNumber
+      TargetGroupARNs:
+        - !Ref AppTargetGroup
+
+Outputs:
+  AlbDNSName:
+    Value: !GetAtt ApplicationLoadBalancer.DNSName
+
+  AlbFullName:
+    Value: !GetAtt ApplicationLoadBalancer.LoadBalancerFullName
+
+  AutoScalingGroupName:
+    Value: !Ref AutoScalingGroup
+
+  TargetGroupArn:
+    Value: !Ref AppTargetGroup
+
+  TargetGroupFullName:
+    Value: !GetAtt AppTargetGroup.TargetGroupFullName
+
+  AppSecurityGroupId:
+    Value: !Ref AppSecurityGroup

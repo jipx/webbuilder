@@ -1,0 +1,97 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  RDS Multi-AZ MySQL instance in private subnets.
+  Includes strong validation to prevent missing or invalid security group IDs.
+
+Parameters:
+  VpcStackName:
+    Type: String
+    Default: studentrecords-vpc
+    AllowedPattern: "^[a-zA-Z0-9-]+$"
+    ConstraintDescription: "VpcStackName must contain only letters, numbers, and hyphens."
+
+  AppSecurityGroupId:
+    Type: String
+    Description: Security Group ID of the application tier (from app.yaml)
+    AllowedPattern: "^sg-[0-9a-fA-F]{8,}$"
+    ConstraintDescription: "Must be a valid security group ID (e.g., sg-0123abcd)."
+
+  DbName:
+    Type: String
+    Default: studentrecords
+    AllowedPattern: "^[a-zA-Z][a-zA-Z0-9_]{0,63}$"
+    ConstraintDescription: "DB name must start with a letter and contain only letters, numbers, and underscores."
+
+  DbUser:
+    Type: String
+    Default: appuser
+    AllowedPattern: "^[a-zA-Z][a-zA-Z0-9_]{0,15}$"
+    ConstraintDescription: "Username must start with a letter and contain only letters, numbers, and underscores."
+
+Resources:
+  # ---------------------------------------------------------
+  # Security Group for RDS
+  # ---------------------------------------------------------
+  DbSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow DB access from application tier
+      VpcId:
+        Fn::ImportValue: !Sub "${VpcStackName}-VpcId"
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 3306
+          ToPort: 3306
+          SourceSecurityGroupId: !Ref AppSecurityGroupId
+
+  # ---------------------------------------------------------
+  # DB Subnet Group (private subnets only)
+  # ---------------------------------------------------------
+  DbSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: Private subnets for RDS
+      SubnetIds:
+        - Fn::ImportValue: !Sub "${VpcStackName}-PrivateSubnet1Id"
+        - Fn::ImportValue: !Sub "${VpcStackName}-PrivateSubnet2Id"
+
+  # ---------------------------------------------------------
+  # Secrets Manager: DB password
+  # ---------------------------------------------------------
+  DbSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      GenerateSecretString:
+        SecretStringTemplate: !Sub |
+          {"username":"${DbUser}"}
+        GenerateStringKey: password
+        PasswordLength: 32
+        ExcludeCharacters: '"@/\'
+
+  # ---------------------------------------------------------
+  # RDS Instance
+  # ---------------------------------------------------------
+  RdsInstance:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      Engine: mysql
+      DBInstanceClass: db.t3.micro
+      AllocatedStorage: 20
+      MultiAZ: true
+      PubliclyAccessible: false
+      DBName: !Ref DbName
+      MasterUsername: !Ref DbUser
+      MasterUserPassword: !Sub "{{resolve:secretsmanager:${DbSecret}::password}}"
+      VPCSecurityGroups:
+        - !Ref DbSecurityGroup
+      DBSubnetGroupName: !Ref DbSubnetGroup
+
+Outputs:
+  RdsEndpoint:
+    Value: !GetAtt RdsInstance.Endpoint.Address
+
+  RdsInstanceIdentifier:
+    Value: !Ref RdsInstance
+
+  DbSecretArn:
+    Value: !Ref DbSecret
