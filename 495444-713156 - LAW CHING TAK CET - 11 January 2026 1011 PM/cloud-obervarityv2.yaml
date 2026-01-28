@@ -1,0 +1,61 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudWatch dashboards + alarms.
+
+Parameters:
+  AutoScalingGroupName:
+    Type: String
+
+  AlbFullName:
+    Type: String
+
+  TargetGroupFullName:
+    Type: String
+
+  RdsInstanceIdentifier:
+    Type: String
+
+Resources:
+  AsgHighCpuAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: !Sub "${AutoScalingGroupName}-HighCPU"
+      Namespace: AWS/EC2
+      MetricName: CPUUtilization
+      Dimensions:
+        - Name: AutoScalingGroupName
+          Value: !Ref AutoScalingGroupName
+      Statistic: Average
+      Period: 60
+      EvaluationPeriods: 5
+      Threshold: 70
+      ComparisonOperator: GreaterThanThreshold
+
+  Alb5xxAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: !Sub "${AlbFullName}-5XX"
+      Namespace: AWS/ApplicationELB
+      MetricName: HTTPCode_ELB_5XX_Count
+      Dimensions:
+        - Name: LoadBalancer
+          Value: !Ref AlbFullName
+      Statistic: Sum
+      Period: 60
+      EvaluationPeriods: 5
+      Threshold: 10
+      ComparisonOperator: GreaterThanThreshold
+
+  RdsHighCpuAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: !Sub "${RdsInstanceIdentifier}-HighCPU"
+      Namespace: AWS/RDS
+      MetricName: CPUUtilization
+      Dimensions:
+        - Name: DBInstanceIdentifier
+          Value: !Ref RdsInstanceIdentifier
+      Statistic: Average
+      Period: 60
+      EvaluationPeriods: 5
+      Threshold: 70
+      ComparisonOperator: GreaterThanThreshold
